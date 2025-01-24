@@ -2,6 +2,7 @@ package com.taskmanagementsystem.task_management_app.configurations;
 
 import com.taskmanagementsystem.task_management_app.enums.UserRoles;
 import com.taskmanagementsystem.task_management_app.services.jwt.UserService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -21,15 +22,11 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @Configuration
 @EnableWebSecurity
 @EnableMethodSecurity
+@RequiredArgsConstructor
 public class WebSecurityConfig {
 
     private final UserService userService;
     private final JwtAuthenticationFilter authenticationFilter;
-
-    public WebSecurityConfig(UserService userService, JwtAuthenticationFilter authenticationFilter) {
-        this.userService = userService;
-        this.authenticationFilter = authenticationFilter;
-    }
 
     @Bean
     public PasswordEncoder passwordEncoder(){

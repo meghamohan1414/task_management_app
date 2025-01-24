@@ -2,19 +2,17 @@ package com.taskmanagementsystem.task_management_app.controller.employee;
 
 import com.taskmanagementsystem.task_management_app.dto.TaskDTO;
 import com.taskmanagementsystem.task_management_app.services.employee.EmployeeService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/employee")
+@RequiredArgsConstructor
 public class EmployeeController {
 
     private final EmployeeService employeeService;
-
-    public EmployeeController(EmployeeService employeeService) {
-        this.employeeService = employeeService;
-    }
 
     @GetMapping("/tasks/{id}")
     public ResponseEntity<?> getTasksByUserId(@PathVariable Long id){

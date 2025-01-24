@@ -8,6 +8,7 @@ import com.taskmanagementsystem.task_management_app.enums.TaskStatus;
 import com.taskmanagementsystem.task_management_app.enums.UserRoles;
 import com.taskmanagementsystem.task_management_app.repositories.TaskRepo;
 import com.taskmanagementsystem.task_management_app.repositories.UserRepo;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -17,15 +18,11 @@ import java.util.stream.Collectors;
 import static com.taskmanagementsystem.task_management_app.utils.Utility.getTaskStatus;
 
 @Service
+@RequiredArgsConstructor
 public class AdminServiceImpl implements AdminService{
 
     private final UserRepo userRepo;
     private final TaskRepo taskRepo;
-
-    public AdminServiceImpl(UserRepo userRepo, TaskRepo taskRepo) {
-        this.userRepo = userRepo;
-        this.taskRepo = taskRepo;
-    }
 
     @Override
     public List<UserDTO> getUsers() {

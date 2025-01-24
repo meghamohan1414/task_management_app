@@ -9,6 +9,7 @@ import com.taskmanagementsystem.task_management_app.repositories.UserRepo;
 import com.taskmanagementsystem.task_management_app.services.auth.AuthService;
 import com.taskmanagementsystem.task_management_app.services.jwt.UserService;
 import com.taskmanagementsystem.task_management_app.utils.JwtUtil;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -24,6 +25,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/auth")
+@RequiredArgsConstructor
 public class AuthController {
 
     private final AuthService authService;
@@ -35,16 +37,6 @@ public class AuthController {
     private final AuthenticationManager authenticationManager;
 
     private final UserService userService;
-
-    public AuthController(AuthService authService, UserRepo userRepo,
-                          JwtUtil jwtUtil, AuthenticationManager authenticationManager, UserService userService) {
-        this.authService = authService;
-        this.userRepo = userRepo;
-        this.jwtUtil = jwtUtil;
-        this.authenticationManager = authenticationManager;
-        this.userService = userService;
-    }
-
 
     @PostMapping("/signup")
     public ResponseEntity<?> signUp(@RequestBody SignUpReq signUpReq){

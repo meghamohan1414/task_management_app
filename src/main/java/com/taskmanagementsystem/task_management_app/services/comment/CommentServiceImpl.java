@@ -7,6 +7,7 @@ import com.taskmanagementsystem.task_management_app.entities.User;
 import com.taskmanagementsystem.task_management_app.repositories.CommentRepo;
 import com.taskmanagementsystem.task_management_app.repositories.TaskRepo;
 import com.taskmanagementsystem.task_management_app.repositories.UserRepo;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
@@ -15,17 +16,12 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
+@RequiredArgsConstructor
 public class CommentServiceImpl implements CommentService{
 
     private final CommentRepo commentRepo;
     private final TaskRepo taskRepo;
     private final UserRepo userRepo;
-
-    public CommentServiceImpl(CommentRepo commentRepo, TaskRepo taskRepo, UserRepo userRepo) {
-        this.commentRepo = commentRepo;
-        this.taskRepo = taskRepo;
-        this.userRepo = userRepo;
-    }
 
     @Override
     public CommentDTO createComment(Long taskId, Long postedBy, String content) {

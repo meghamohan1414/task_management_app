@@ -3,6 +3,7 @@ package com.taskmanagementsystem.task_management_app.services.employee;
 import com.taskmanagementsystem.task_management_app.dto.TaskDTO;
 import com.taskmanagementsystem.task_management_app.entities.Task;
 import com.taskmanagementsystem.task_management_app.repositories.TaskRepo;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -12,13 +13,10 @@ import java.util.stream.Collectors;
 import static com.taskmanagementsystem.task_management_app.utils.Utility.getTaskStatus;
 
 @Service
+@RequiredArgsConstructor
 public class EmployeeServiceImpl implements EmployeeService{
 
     private final TaskRepo taskRepo;
-
-    public EmployeeServiceImpl(TaskRepo taskRepo) {
-        this.taskRepo = taskRepo;
-    }
 
     @Override
     public List<TaskDTO> getTasksByUserId(Long userId) {

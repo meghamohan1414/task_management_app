@@ -2,19 +2,17 @@ package com.taskmanagementsystem.task_management_app.controller.admin;
 
 import com.taskmanagementsystem.task_management_app.dto.TaskDTO;
 import com.taskmanagementsystem.task_management_app.services.admin.AdminService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/admin")
+@RequiredArgsConstructor
 public class AdminController {
 
     private final AdminService adminService;
-
-    public AdminController(AdminService adminService) {
-        this.adminService = adminService;
-    }
 
     @GetMapping("/users")
     public ResponseEntity<?> getUsers() {

@@ -6,20 +6,17 @@ import com.taskmanagementsystem.task_management_app.entities.User;
 import com.taskmanagementsystem.task_management_app.enums.UserRoles;
 import com.taskmanagementsystem.task_management_app.repositories.UserRepo;
 import jakarta.annotation.PostConstruct;
+import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
 @Service
-//@RequiredArgsConstructor
+@RequiredArgsConstructor
 public class AuthServiceImpl implements AuthService {
 
     private final UserRepo userRepo;
-
-    public AuthServiceImpl(UserRepo userRepo) {
-        this.userRepo = userRepo;
-    }
 
     @PostConstruct
     private void createAdminAccount() {
@@ -28,7 +25,7 @@ public class AuthServiceImpl implements AuthService {
             User newAdminUser = new User();
             newAdminUser.setName("admin");
             newAdminUser.setEmail("admin@test.com");
-            newAdminUser.setPassword(new BCryptPasswordEncoder().encode(""));
+            newAdminUser.setPassword(new BCryptPasswordEncoder().encode("adminpassword"));
             newAdminUser.setUserRoles(UserRoles.ADMIN);
             userRepo.save(newAdminUser);
         }

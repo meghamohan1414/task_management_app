@@ -3,6 +3,7 @@ package com.taskmanagementsystem.task_management_app.controller.comment;
 import com.taskmanagementsystem.task_management_app.dto.CommentDTO;
 import com.taskmanagementsystem.task_management_app.dto.TaskDTO;
 import com.taskmanagementsystem.task_management_app.services.comment.CommentService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -11,13 +12,10 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/comment")
+@RequiredArgsConstructor
 public class CommentController {
 
     private final CommentService commentService;
-
-    public CommentController(CommentService commentService) {
-        this.commentService = commentService;
-    }
 
     @PostMapping("/task/createComment")
     public ResponseEntity<?> createComment(@RequestParam Long taskId, @RequestParam Long userId, @RequestBody String content){
